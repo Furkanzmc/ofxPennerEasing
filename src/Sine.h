@@ -8,15 +8,23 @@
 #endif
 namespace ofxPennerEasing
 {
-class Sine;
-}
-
-class ofxPennerEasing::Sine
+class Sine
 {
 public:
-    static float easeIn(float t, float b , float c, float d);
-    static float easeOut(float t, float b , float c, float d);
-    static float easeInOut(float t, float b , float c, float d);
-};
+    static float easeIn(float t, float b , float c, float d)
+    {
+        return -c * cos(t / d * (PI / 2)) + c + b;
+    }
 
+    static float easeOut(float t, float b , float c, float d)
+    {
+        return c * sin(t / d * (PI / 2)) + b;
+    }
+
+    static float easeInOut(float t, float b , float c, float d)
+    {
+        return -c / 2 * (cos(PI * t / d) - 1) + b;
+    }
+};
+}
 #endif
